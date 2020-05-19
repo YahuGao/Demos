@@ -1,0 +1,84 @@
+set nocompatible              " required
+filetype off                  " required
+set tags+=tags;
+set autochdir
+set tags+=/home/yahu/anaconda3/lib/python3.7/site-packages/tags
+filetype plugin on
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Chiel92/vim-autoformat'             " 自动格式化
+" Plugin 'ycm-core/YouCompleteMe'             " 自动补全插件，python基于jedi
+Plugin 'davidhalter/jedi-vim'               " python自动补全和代码跳转
+Plugin 'scrooloose/nerdtree'                " 文件树
+Plugin 'bling/vim-airline'                  " 状态栏 status bar
+Plugin 'w0rp/ale'                           " 代码检查工具
+Plugin 'Yggdroot/indentLine'                " 代码缩进指示功能
+Plugin 'kien/rainbow_parentheses.vim'       " 不同颜色区分括号匹配
+Plugin 'jiangmiao/auto-pairs'               " 括号、引号快速输入和补全
+Plugin 'ctrlpvim/ctrlp.vim'                 " 模糊搜索插件
+Plugin 'tpope/vim-fugitive'                 " vim内集成Git
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" >>> Plugin 'Chiel92/vim-autoformat'
+nnoremap <F6> :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+" >>> Plugin 'scrooloose/nerdtree'
+nnoremap <F3> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" >>> Plugin 'kien/rainbow_parentheses.vim'flkdsjfl
+let g:rbpt_colorpairs = [
+                        \ ['brown',       'RoyalBlue3'],
+                        \ ['Darkblue',    'SeaGreen3'],
+                        \ ['darkgray',    'DarkOrchid3'],
+                        \ ['darkgreen',   'firebrick3'],
+                        \ ['darkcyan',    'RoyalBlue3'],
+                        \ ['darkred',     'SeaGreen3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['brown',       'firebrick3'],
+                        \ ['gray',        'RoyalBlue3'],
+                        \ ['darkmagenta', 'DarkOrchid3'],
+                        \ ['Darkblue',    'firebrick3'],
+                        \ ['darkgreen',   'RoyalBlue3'],
+                        \ ['darkcyan',    'SeaGreen3'],
+                        \ ['darkred',     'DarkOrchid3'],
+                        \ ['red',         'firebrick3'],
+                        \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" >>> Plugin 'w0rp/ale'
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+
+" >>> 按 F5 执行当前 Python 代码"
+map <F5> :call PRUN()<CR>
+func! PRUN()
+    exec "w" 
+    if &filetype == 'python'
+        exec "!python %"
+    endif
+endfunc
