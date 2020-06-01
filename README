@@ -1,0 +1,4 @@
+Usages of configuration files:
+ln -s ${DemosDIR}/emacs/emacs ~/.emcas
+ln -s ${DemosDir}/vim/vimrc ~/.vimrc
+ln -s ${DemosDir}/zsh/zshrc ~/.zshrc
