@@ -34,3 +34,22 @@ print(x)
 print(y)
 print(z)
 print(out)
+
+# Example of Jacobian-vector
+a = torch.randn(3, requires_grad=True)
+b = a * 2
+while b.data.norm() < 1000:
+    b = b * 2
+
+print(b)
+
+v = torch.tensor([0.1, 1.0, 0.001], dtype=torch.float)
+b.backward(v)
+
+print(a.grad)
+
+print(a.requires_grad)
+print((a ** 2).requires_grad)
+
+with torch.no_grad():
+    print((a ** 2).requires_grad)
