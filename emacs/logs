@@ -42,3 +42,11 @@ end : move to the end of the line
 page up : move up a page
 page down : move down a page
 M- : move to end of buffer
+
+M-x shell: run a subshell with input and output throug an Emacs buffer
+M-| cmd RET: run the shell command line *cmd* with region contents as input(so you need markset a region at first)
+M-!: run shell command
+**** while open a python file ****
+C-c C-z: open a python shell
+C-c C-c: run the content of the buffer in the opened python shell
+C-c C-r: run the selected region in the python shell
