@@ -20,14 +20,14 @@ C-x C-s : save file
 C-x C-w : save file as
 
 C-space : set region mark
-C-w : kill region
+C-w : kill region (the kill like cut in GUI)
 C-k : kill region between point and end of current line
 M-w : kill region without deleting
 C-y : yank region from kill ring
 M-y : move to previous item in the kill ring
 M-Y : move to next item in the kill ring
 
-C-_ : undo
+C-_ :  undo(the same with C-x u)
 C-s : search forwards
 C-r : search backwards
 M-% : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)
