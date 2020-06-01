@@ -1,0 +1,15 @@
+# Created by newuser for 5.8
+autoload -U compinit promptinit
+compinit
+promptinit
+
+prompt walters
+#PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%#"
+#RPROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
+alias vi="emacs -nw"
+alias emacs="emacs -nw"
+alias condaBase='eval "$(/home/yahu/anaconda3/bin/conda shell.zsh hook)"'
+
+# PATH
+typeset -U path
+path=(~/bin $path[@])
