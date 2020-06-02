@@ -50,3 +50,16 @@ M-!: run shell command
 C-c C-z: open a python shell
 C-c C-c: run the content of the buffer in the opened python shell
 C-c C-r: run the selected region in the python shell
+
+Date: 02/06/2020
+Add el-get for emacs without basic setup.
+**** INSTALL METHOD ****
+;; So the idea is that you copy/paste this code into your *scratch* buffer,
+;; hit C-j, and you have a working el-get.
+(url-retrieve
+ "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el"
+ (lambda (s)
+   (goto-char (point-max))
+   (eval-print-last-sexp)))
+**** INSTALL METHOD ****
+For details reference: https://github.com/dimitri/el-get
