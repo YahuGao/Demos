@@ -96,4 +96,3 @@ output = net(input)
 loss = criterion(target, output)
 loss.backward()
 optimizer.step()   # Does the update
-
