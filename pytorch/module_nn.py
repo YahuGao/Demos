@@ -14,6 +14,7 @@ model = torch.nn.Sequential(
 loss_fn = torch.nn.MSELoss(reduction='sum')
 
 lr = 1e-4
+optimizer = torch.optim.Adam(model.parameters(), lr = lr)
 
 for t in range(500):
     y_pred = model(x)
@@ -21,10 +22,14 @@ for t in range(500):
     loss = loss_fn(y_pred, y)
     print(t, loss.item())
 
-    model.zero_grad()
+    # model.zero_grad()
+    optimizer.zero_grad()
 
     loss.backward()
 
+    optimizer.step()
+    '''
     with torch.no_grad():
         for param in model.parameters():
             param -= lr * param.grad
+    '''
