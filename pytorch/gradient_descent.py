@@ -13,15 +13,15 @@ y = np.random.randn(N, D_out)
 dtype = torch.float
 device = torch.device("cpu")
 
-x = torch.randn(N, D_in, device=device, dtype=dtype)
-y = torch.rand(N, D_out, device=device, dtype=dtype)
+x = torch.randn(N, D_in, device=device, dtype=dtype, requires_grad=True)
+y = torch.rand(N, D_out, device=device, dtype=dtype, requires_grad=True)
 
 # Initial weight
 w1 = np.random.randn(D_in, H)
 w2 = np.random.randn(H, D_out)
 
-w1 = torch.randn(D_in, H, device=device, dtype=dtype)
-w2 = torch.randn(H, D_out, device=device, dtype=dtype)
+w1 = torch.randn(D_in, H, device=device, dtype=dtype, requires_grad=True)
+w2 = torch.randn(H, D_out, device=device, dtype=dtype, requires_grad=True)
 
 learning_rate = 0.001
 for t in range(500):
@@ -34,9 +34,10 @@ for t in range(500):
     y_pred = h_relu.mm(w2)
     # compute loss
     # loss = np.square(y_pred - y).sum()
-    loss = (y_pred - y).pow(2).sum().item()
+    loss = (y_pred - y).pow(2).sum()
     print(t, loss)
 
+    '''
     # backward: compute gradient
     grad_y_pred = 2.0 * (y_pred - y)
     # grad_w2 = h_relu.T.dot(grad_y_pred)
@@ -48,7 +49,14 @@ for t in range(500):
     grad_h[h< 0] = 0
     # grad_w1 = x.T.dot(grad_h)
     grad_w1 = x.t().mm(grad_h)
+    '''
 
+    # backward with autograd
+    loss.backward()
     # update weight
-    w1 -= learning_rate * grad_w1
-    w2 -= learning_rate * grad_w2
+    with torch.no_grad():
+        w1 -= learning_rate * w1.grad
+        w2 -= learning_rate * w2.grad
+
+        w1.grad.zero_()
+        w2.grad.zero_()
