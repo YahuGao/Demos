@@ -144,7 +144,7 @@ def visualize_model(model, num_images=6):
 
             for j in range(inputs.size()[0]):
                 images_so_far += 1
-                ax = plt.subplot(num_image//2, 2, images_so_far)
+                ax = plt.subplot(num_images//2, 2, images_so_far)
                 ax.axis('off')
                 ax.set_title('predicted: {}'.format(class_names[preds[j]]))
                 imshow(inputs.cpu().data[j])
@@ -155,14 +155,39 @@ def visualize_model(model, num_images=6):
         model.train(mode=was_training)
 
 # fine-tuning ConvNet
-model_ft = models.resnet18(pretrained=True)
-num_ftrs = model_ft.fc.in_features
-model_ft.fc = nn.Linear(num_ftrs, 2)
-model_ft = model_ft.to(device)
-criterion = nn.CrossEntropyLoss()
+if False:
+    model_ft = models.resnet18(pretrained=True)
+    num_ftrs = model_ft.fc.in_features
+    model_ft.fc = nn.Linear(num_ftrs, 2)
+    model_ft = model_ft.to(device)
+    criterion = nn.CrossEntropyLoss()
 
-optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
-# 每7个epochs衰减LR gamma=0.1
-exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
-model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
-                       num_epoches=25)
+    optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+    # 每7个epochs衰减LR gamma=0.1
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+    model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
+                           num_epoches=5)
+    visualize_model(model_ft)
+
+if True:
+    # ConvNet as firm features extractor
+    model_conv = torchvision.models.resnet18(pretrained=True)
+    for param in model_conv.parameters():
+        param.requires_grad = False
+
+    # parameters of newly constructed modules have requires_grad=True by default
+    num_ftrs = model_conv.fc.in_features
+    model_conv.fc = nn.Linear(num_ftrs, 2)
+
+    model_conv = model_conv.to(device)
+    criterion = nn.CrossEntropyLoss()
+
+    optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
+
+    exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gamma=0.1)
+
+    model_conv = train_model(model_conv, criterion, optimizer_conv,
+                             exp_lr_scheduler, num_epoches=8)
+    visualize_model(model_conv)
+    plt.ioff()
+    plt.show()
