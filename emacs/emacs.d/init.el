@@ -80,10 +80,6 @@ There are two things you can do about this warning:
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
 
-;; Find Executable Path on OS X
-(when (memq window-system '(mac ns))
-   (exec-path-from-shell-initialize))
-
 ;; 自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
