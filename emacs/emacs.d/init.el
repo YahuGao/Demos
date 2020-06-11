@@ -105,3 +105,5 @@ There are two things you can do about this warning:
 ;; (global-h1-line-mode 1)
 
 (load-theme 'monokai 1)
+(add-to-list 'load-path "~/emacs-application-framework")
+(require 'eaf)
