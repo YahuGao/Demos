@@ -6,9 +6,7 @@ promptinit
 prompt walters
 #PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%#"
 #RPROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
-alias vi="emacs -nw"
 alias es="emacs -nw"
-alias emacs="emacs -nw"
 alias condaBase='eval "$(/home/yahu/anaconda3/bin/conda shell.zsh hook)"'
 alias ls="ls --color=always"
 
