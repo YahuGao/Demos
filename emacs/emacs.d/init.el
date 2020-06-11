@@ -33,8 +33,8 @@
 ;; 这一行代码，将函数 open-init-file 绑定到 <f2> 键上
 (global-set-key (kbd "<f2>") 'open-init-file)
 
-;; 开启全局 Company 补全
-(global-company-mode 1)
+;; 开启全局 Company 补全, uninstalled Company
+;; (global-company-mode 1)
 
 ;; 关闭自动备份
 (setq make-bakeup-files nil)
@@ -63,3 +63,45 @@ There are two things you can do about this warning:
 (package-initialize)
 
 ;; M-x package-refresh-contents or M-x package-list-packages to ensure that Emacs has fetched the MELPA package list
+;; cl - Common Lisp Extension
+(require 'cl)
+
+;; Add Packages
+(defvar my/packages '(
+	;; --- Auto-completion ---
+	company
+	;; --- Better Editor ---
+	hungry-delete
+	swiper
+	counsel
+	smartparens
+	;; --- Themes ---
+	monokai-theme
+	;; solarized-theme
+	) "Default packages")
+
+(setq package-selected-packages my/packages)
+
+(defun my/packages-installed-p ()
+    (loop for pkg in my/packages
+	   when (not (package-installed-p pkg)) do (return nil)
+	   finally (return t)))
+
+(unless (my/packages-installed-p)
+     (message "%s" "Refreshing package database...")
+     (package-refresh-contents)
+     (dolist (pkg my/packages)
+       (when (not (package-installed-p pkg))
+	 (package-install pkg))))
+
+;; Find Executable Path on OS X
+(when (memq window-system '(mac ns))
+   (exec-path-from-shell-initialize))
+
+;; 自动括号匹配
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+
+;; 高亮当前行 void function
+;; (global-h1-line-mode 1)
+
+(load-theme 'monokai 1)
