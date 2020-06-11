@@ -63,3 +63,10 @@ Add el-get for emacs without basic setup.
    (eval-print-last-sexp)))
 **** INSTALL METHOD ****
 For details reference: https://github.com/dimitri/el-get
+
+;; Org-mode 可以列出提高，并使用tab键进行展开和关闭
+C-c C-t 将一个条目转换成一条代办事件
+
+C-h C-f find-function
+C-h C-v find-variable
+C-h C-k find-function-on-key
