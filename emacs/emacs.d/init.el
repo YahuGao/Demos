@@ -63,23 +63,9 @@ There are two things you can do about this warning:
 (package-initialize)
 
 ;; M-x package-refresh-contents or M-x package-list-packages to ensure that Emacs has fetched the MELPA package list
-;; cl - Common Lisp Extension
-(require 'cl)
 
-;; Add Packages
-(defvar my/packages '(
-	;; --- Auto-completion ---
-	company
-	;; --- Better Editor ---
-	hungry-delete
-	swiper
-	counsel
-	smartparens
-	;; --- Themes ---
-	monokai-theme
-	;; solarized-theme
-	) "Default packages")
-
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'init-packages)
 (setq package-selected-packages my/packages)
 
 (defun my/packages-installed-p ()
