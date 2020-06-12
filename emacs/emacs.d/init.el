@@ -68,3 +68,14 @@
 					    ("8yh" "Yahu Gao")
 					    ("8yh@" "yahu.gao@outlook.com")
 					    ))
+;; C-w 向后删除一个单词
+(global-set-key (kbd "C-w") 'backward-kill-word)
+;; 显示时间
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+;; (setq display-time-day-and-date t)
+
+;; 隐藏工具栏菜单栏和滚动条
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
