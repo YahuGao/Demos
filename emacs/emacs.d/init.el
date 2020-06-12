@@ -1,3 +1,11 @@
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'init-melpa)
+(require 'init-packages)
+(load-theme 'monokai 1)
+
+(add-to-list 'load-path "~/emacs-application-framework")
+(require 'eaf)
+
 ;; 修改配置文件后，需要重启编辑器或者重新加载配置文件
 ;; 重新加载配置文件 M-x load-file Enter Enter or M-x eval-buffer
 ;; 关闭工具栏，tool-bar-mode 即为一个 Minor Mode
@@ -45,17 +53,8 @@
 ;; 即当你选中一段文字 之后输入一个字符会替换掉你选中部分的文字。
 (delete-selection-mode 1)
 
-
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'init-melpa)
-(require 'init-packages)
-
 ;; 自动括号匹配
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 ;; 高亮当前行 void function
 ;; (global-h1-line-mode 1)
-
-(load-theme 'monokai 1)
-(add-to-list 'load-path "~/emacs-application-framework")
-(require 'eaf)
