@@ -45,9 +45,9 @@
 ;; (global-company-mode 1)
 
 ;; 关闭自动备份
-(setq make-bakeup-files nil)
+(setq make-bakeup-files 0)
 ;; 关闭自动保存
-(setq auto-save-default nil)
+(setq auto-save-default 0)
 
 ;; 使用下面的配置文件将删除功能配置成与其他图形界面的编辑器相同
 ;; 即当你选中一段文字 之后输入一个字符会替换掉你选中部分的文字。
