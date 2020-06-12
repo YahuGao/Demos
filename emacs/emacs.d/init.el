@@ -61,3 +61,10 @@
 
 ;; 简化yes or no 为y or n
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; 缩写补全
+(setq-default abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ("8yh" "Yahu Gao")
+					    ("8yh@" "yahu.gao@outlook.com")
+					    ))
