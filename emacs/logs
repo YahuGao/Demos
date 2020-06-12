@@ -70,3 +70,6 @@ C-c C-t 将一个条目转换成一条代办事件
 C-h C-f find-function
 C-h C-v find-variable
 C-h C-k find-function-on-key
+
+M-< move to top of the buffer
+M-> move to end of the buffer
