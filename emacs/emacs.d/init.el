@@ -58,3 +58,6 @@
 
 ;; 高亮当前行 void function
 ;; (global-h1-line-mode 1)
+
+;; 简化yes or no 为y or n
+(fset 'yes-or-no-p 'y-or-n-p)
