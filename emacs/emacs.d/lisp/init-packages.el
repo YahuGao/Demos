@@ -30,4 +30,4 @@
 	 (package-install pkg))))
 
 ;; 文件末尾
-（provide 'init-packages)
+(provide 'init-packages)
