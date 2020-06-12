@@ -29,5 +29,7 @@
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
 
+;; load theme
+(load-theme 'monokai 1)
 ;; 文件末尾
 (provide 'init-packages)

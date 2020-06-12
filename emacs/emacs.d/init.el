@@ -1,7 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'init-melpa)
 (require 'init-packages)
-(load-theme 'monokai 1)
 
 (add-to-list 'load-path "~/emacs-application-framework")
 (require 'eaf)
