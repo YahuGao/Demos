@@ -14,6 +14,10 @@
 	solarized-theme
         markdown-mode
         grip-mode
+	elpy                    ;; Emacs Lisp Python Environment
+	flycheck                ;; On the fly syntax checking
+	py-autopep8             ;; Run autopep8 on save
+	magit                   ;; Git integration
 	) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -53,6 +57,19 @@
 ;; option.
 (setq grip-preview-use-webkit t)
 ;; -----------------------------Configuration of grip-mode-------------------------------------
-
+;; ====================================
+;; Development Setup
+;; ====================================
+;; Enable elpy
+(elpy-enable)
+;; Enable Flycheck
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; Enable autopep8
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; Enable anaconda-mode
+;; (add-hook 'python-mode-hook 'anaconda-mode)
 ;; 文件末尾
 (provide 'init-packages)
