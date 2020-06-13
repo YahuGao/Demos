@@ -10,11 +10,10 @@
 	swiper
 	counsel
 	smartparens
-	;; --- Themes ---
-	monokai-theme
+	monokai-theme       	;; --- Themes ---
+	solarized-theme
         markdown-mode
         grip-mode
-	;; solarized-theme
 	) "Default packages")
 
 (setq package-selected-packages my/packages)
