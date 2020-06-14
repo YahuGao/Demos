@@ -136,3 +136,6 @@ boldify-names
 boldify-names
 
 (boldify-names)
+
+(setq a (format-time-string "%Y-%m-%d"))
+a
