@@ -1,3 +1,23 @@
+;; https://melpa.org/#/getting-started
+;; Install MELPA
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+  ;; and `package-pinned-packages`. Most users will not need or want to do this.
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  )
+(package-initialize)
+;; M-x package-refresh-contents or M-x package-list-packages to ensure that Emacs has fetched the MELPA package list
+
 ;; cl - Common Lisp Extension
 (require 'cl)
 
@@ -18,6 +38,10 @@
 	flycheck                ;; On the fly syntax checking
 	py-autopep8             ;; Run autopep8 on save
 	magit                   ;; Git integration
+	auctex                  ;; Write and formate tex files
+	reftex                  ;; Help inserting labels, references and citations of tex
+	ivy-bibtex              ;; Help insert citations
+	pdf-tools               ;; Viewing and interacting with pdf within emacs
 	) "Default packages")
 
 (setq package-selected-packages my/packages)
@@ -34,42 +58,6 @@
        (when (not (package-installed-p pkg))
 	 (package-install pkg))))
 
-;; load theme
-(load-theme 'monokai 1)
-(require 'markdown-mode)
-;; -----------------------------Configuration of grip-mode-------------------------------------
-;; Make a keybinding: `C-c C-c g'
-(define-key markdown-mode-command-map (kbd "g") #'grip-mode)
-;; Or start grip when opening a markdown/org buffer
-(add-hook 'markdown-mode-hook #'grip-mode)
-(add-hook 'org-mode-hook #'grip-mode)
-;; Path to the grip binary
-(setq grip-binary-path "/usr/bin/grip")
-;; A GitHub username for API authentication
-(setq grip-github-user "YahuGao")
-;; A GitHub password or auth token for API auth
-(setq grip-github-password "c08aea33e429699054142cf85bf8e0c0bc63bbb8")
-;; When nil, update the preview after file saves only, instead of also
-;; after every text change
-(setq grip-update-after-change nil)
-;; Use embedded webkit to previe
-;; This requires GNU/Emacs version >= 26 and built with the `--with-xwidgets`
-;; option.
-(setq grip-preview-use-webkit t)
-;; -----------------------------Configuration of grip-mode-------------------------------------
-;; ====================================
-;; Development Setup
-;; ====================================
-;; Enable elpy
-(elpy-enable)
-;; Enable Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-;; Enable anaconda-mode
-;; (add-hook 'python-mode-hook 'anaconda-mode)
+(require 'config-packages)
 ;; 文件末尾
 (provide 'init-packages)
