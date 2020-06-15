@@ -41,5 +41,18 @@
 ;; <<< Configuration of python IDE <<<
 
 ;; >>> configuration of TEX >>>
+(setq TeX-auto-save t)
+(setq Tex-parse-self t)
+(setq-default TeX-master nil)
+(add-hook 'LaTex-mode-hook
+	  (lambda ()
+	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%'%t"TeX-run-TeX nil t))
+	    (setq TeX-command-default "XeLaTeX")))
+
+(defun my-LaTeX-mode()
+  (add-to-list 'TeX-view-program-list '("firefox" "firefox --new-window %o" "firefox"))
+  (setq TeX-view-program-selection '((output-pdf "firefox")))
+  )
+(add-hook 'LaTeX-mode-hook 'my-LaTeX-mode)
 ;; <<< configuration of TEX <<<
 (provide 'config-packages)
