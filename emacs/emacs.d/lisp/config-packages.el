@@ -4,10 +4,10 @@
 ;; >>> Configuration of MARKDOWN >>>
 (require 'markdown-mode)
 ;; Make a keybinding: `C-c C-c g'
-(define-key markdown-mode-command-map (kbd "g") #'grip-mode)
+(define-key markdown-mode-command-map (kbd "g") 'grip-mode)
 ;; Or start grip when opening a markdown/org buffer
-(add-hook 'markdown-mode-hook #'grip-mode)
-(add-hook 'org-mode-hook #'grip-mode)
+;; (add-hook 'markdown-mode-hook 'grip-mode)
+;; (add-hook 'org-mode-hook 'grip-mode)
 ;; Path to the grip binary
 (setq grip-binary-path "/usr/bin/grip")
 ;; A GitHub username for API authentication
@@ -44,9 +44,9 @@
 (setq TeX-auto-save t)
 (setq Tex-parse-self t)
 (setq-default TeX-master nil)
-(add-hook 'LaTex-mode-hook
+(add-hook 'LaTeX-mode-hook
 	  (lambda ()
-	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%'%t"TeX-run-TeX nil t))
+	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
 	    (setq TeX-command-default "XeLaTeX")))
 
 (defun my-LaTeX-mode()
