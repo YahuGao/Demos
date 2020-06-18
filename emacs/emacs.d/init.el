@@ -48,7 +48,7 @@
 					    ("8yh@" "yahu.gao@outlook.com")
 					    ))
 ;; C-w 向后删除一个单词
-(global-set-key (kbd "C-w") 'backward-kill-word)
+;; (global-set-key (kbd "C-w") 'backward-kill-word)
 ;; 显示时间
 (display-time-mode 1)
 (setq display-time-24hr-format t)
