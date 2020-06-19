@@ -4,8 +4,10 @@ compinit
 promptinit
 
 prompt walters
-#PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%#"
-#RPROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
+# PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%#"
+# PROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
+PROMPT="%{$fg[yellow]%}%1~ %{$reset_color%}%#"
+
 alias es="emacs -nw --debug-init"
 alias ls="ls --color=always"
 
