@@ -34,4 +34,13 @@ unset __conda_setup
 export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+export TEXMFDIST=/usr/share/texmf-dist:$TEXMFDIST
+export TEXMFLOCAL=/usr/local/share/texmf:/usr/share/texmf
+export TEXMFSYSVAR=/var/lib/texmf
+export TEXMFSYSCONFIG=/etc/texmf
+# export TEXMFHOME=~/texmf
+# export TEXMFVAR=~/.texlive/texmf-var
+# TEXMFCONFIG=~/.texlive/texmf-config
+# TEXMFCACHE=$TEXMFSYSVAR;$TEXMFVR
+# export TEXMFCONFIG TEXMFCACHE
 # <<< texlive <<<
