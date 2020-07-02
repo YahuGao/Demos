@@ -208,6 +208,7 @@ class LSTMPoetryModel(object):
 
     def generate_sample_result(self, epoch, logs):
         if epoch % 5 != 0:
+            print(logs)
             return
         with open('out/out.txt', 'a', encoding='utf-8') as f:
             f.write('=============第{}轮============\n'.format(epoch))
