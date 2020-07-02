@@ -125,7 +125,7 @@ class LSTMPoetryModel(object):
         x_pred = np.zeros((1, self.config.max_len, len(self.words)))
         for t, char in enumerate(sentence):
             x_pred[0, t, self.word2idx_dic(char)] = 1.0
-        preds = self.model.predict(x_pred, verbose=0)[0]
+        preds = self.model(x_pred, training=False)[0]
         next_index = self.sample(preds, temperature=temperature)
         next_char = self.idx2word[next_index]
         return next_char
