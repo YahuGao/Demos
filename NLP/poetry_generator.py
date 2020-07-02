@@ -76,9 +76,9 @@ class LSTMPoetryModel(object):
         with mirrored_strategy.scope():
             input_tensor = Input(shape=(self.config.max_len, len(self.words)))
             lstm = LSTM(512, return_sequences=True)(input_tensor)
-            dropout = Dropout(0.6)(lstm)
+            dropout = Dropout(0.4)(lstm)
             lstm = LSTM(256)(dropout)
-            dropout = Dropout(0.6)(lstm)
+            dropout = Dropout(0.4)(lstm)
             dense = Dense(len(self.words), activation = 'softmax')(dropout)
             self.model = Model(inputs=input_tensor, outputs=dense)
             optimizer = Adam(lr = self.config.learning_rate)
