@@ -224,7 +224,7 @@ class LSTMPoetryModel(object):
     def train(self):
         print('Training...')
         number_of_epoch = len(self.files_content) - (self.config.max_len + 1) * self.poems_num
-        number_of_epoch /= self.config.batch_size
+        steps_per_epoch = number_of_epoch / self.config.batch_size
         number_of_epoch = int(number_of_epoch / 1.5)
         print('EPOCHES is %d\n' % number_of_epoch)
         print('POEMS\' number is %d\n' % self.poems_num)
@@ -234,7 +234,8 @@ class LSTMPoetryModel(object):
 
         self.model.fit(self.data_generate(),
                        verbose=True,
-                       steps_per_epoch=self.config.batch_size,
+                       # Total number of steps (batches of samples) before declaring one epoch finished and starting the next epoch.
+                       steps_per_epoch=steps_per_epoch,
                        epochs=number_of_epoch,
                        callbacks=[
                            ModelCheckpoint(self.config.weight_file, save_weights_only=False),
