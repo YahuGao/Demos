@@ -169,7 +169,7 @@ class LSTMPoetryModel(object):
             return
         max_len = self.config.max_len
         if len(text) < max_len:
-            print('给出的初始数字不能低于 %d\n' % max_len)
+            print('给出的初始字数不能低于 %d\n' % max_len)
             return
         sentence = text[-max_len:]
         print('第一行为%s\n' % sentence)
