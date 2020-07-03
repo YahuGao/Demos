@@ -245,7 +245,7 @@ class LSTMPoetryModel(object):
                        )
 
 if __name__ == '__main__':
-    tf.debugging.set_log_device_placement(True)
+    # tf.debugging.set_log_device_placement(True)
     model = LSTMPoetryModel(ModelConfig)
     print('Model loaded.')
     print('------------藏头诗----------')
