@@ -14,8 +14,8 @@ class ModelConfig(object):
     weight_file = './model/poetry_models.h5'
     max_len = 6
     batch_size = 32
-    learning_rate = 0.003
-    number_of_epoch = 100
+    learning_rate = 0.004
+    number_of_epoch = 3
 
 def preprocess_data(ModelConfig):
     files_content = ''
@@ -107,6 +107,8 @@ class LSTMPoetryModel(object):
 
             yield x_vec, y_vec
             i += 1
+            if i > len(self.files_content) - self.config.max_len:
+                raise StopIteration
 
     def sample(self, preds, temperature=1.0):
         preds = np.asarray(preds).astype('float64')
