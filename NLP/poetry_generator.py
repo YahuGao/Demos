@@ -15,6 +15,7 @@ class ModelConfig(object):
     max_len = 6
     batch_size = 32
     learning_rate = 0.003
+    number_of_epoch = 100
 
 def preprocess_data(ModelConfig):
     files_content = ''
@@ -224,9 +225,8 @@ class LSTMPoetryModel(object):
 
     def train(self):
         print('Training...')
-        number_of_epoch = len(self.files_content) - (self.config.max_len + 1) * self.poems_num
-        steps_per_epoch = number_of_epoch / self.config.batch_size
-        number_of_epoch = int(number_of_epoch / 1.5)
+        number_of_epoch = self.config.number_of_epoch
+        steps_per_epoch = self.files_content / self.config.batch_size
         print('EPOCHES is %d\n' % number_of_epoch)
         print('POEMS\' number is %d\n' % self.poems_num)
         print('文件长度为 %d' % len(self.files_content))
