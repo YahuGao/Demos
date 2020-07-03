@@ -107,7 +107,7 @@ class LSTMPoetryModel(object):
 
             yield x_vec, y_vec
             i += 1
-            
+
     def sample(self, preds, temperature=1.0):
         preds = np.asarray(preds).astype('float64')
         exp_preds = np.power(preds, 1./temperature)
@@ -118,7 +118,6 @@ class LSTMPoetryModel(object):
 
     def _pred(self, sentence, temperature=1):
         ''' 根据输入的最后五个字,返回单个预测的字'''
-        
         if len(sentence) < self.config.max_len:
             print('_pred error sentence')
             return
@@ -130,10 +129,10 @@ class LSTMPoetryModel(object):
         next_index = self.sample(preds, temperature=temperature)
         next_char = self.idx2word[next_index]
         return next_char
-        
+
     def _preds(self, sentence, length=23, temperature=1):
         ''' 根据输入的前五个字, 生成length个字'''
-        
+
         sentence = sentence[:self.config.max_len]
         generate = ''
         for i in range(length):
@@ -141,8 +140,8 @@ class LSTMPoetryModel(object):
             generate += pred
             sentence = sentence[1:]+pred
         return generate
-    
-    def predict_random(self, temperature = 1):
+
+    def predict_random(self, temperature=1):
         ''' 1.从库中随机选取一句开头的诗句,生成五言绝句'''
         if not self.model:
             print('No available model')
@@ -153,7 +152,7 @@ class LSTMPoetryModel(object):
         generate = self.predict_sen(sentence, temperature=temperature)
         return generate
 
-    def predict_first(self, char, temperature = 1):
+    def predict_first(self, char, temperature=1):
         ''' 2.根据给出的首个字, 生成五言绝句'''
         if not self.model:
             print('No available model')
@@ -163,8 +162,8 @@ class LSTMPoetryModel(object):
         generate = str(sentence)
         generate += self._preds(sentence, length=23, temperature=temperature)
         return generate
-    
-    def predict_sen(self, text, temperature = 1):
+
+    def predict_sen(self, text, temperature=1):
         '''3. 根据给出的前max_len个字生成五言绝句'''
         if not self.model:
             return
