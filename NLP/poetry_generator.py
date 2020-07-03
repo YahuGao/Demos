@@ -226,7 +226,7 @@ class LSTMPoetryModel(object):
     def train(self):
         print('Training...')
         number_of_epoch = self.config.number_of_epoch
-        steps_per_epoch = self.files_content / self.config.batch_size
+        steps_per_epoch = len(self.files_content) / self.config.batch_size
         print('EPOCHES is %d\n' % number_of_epoch)
         print('POEMS\' number is %d\n' % self.poems_num)
         print('文件长度为 %d' % len(self.files_content))
