@@ -257,7 +257,7 @@ if __name__ == '__main__':
     print('------------根据第一句生成----------')
     for i in range(3):
         # 给定第一句话进行预测
-        sen = model.predict_sen('山阳空飞鸟')
+        sen = model.predict_sen('山阳空飞鸟，')
         print(sen)
 
     print('------------给定第一个字生成----------')
