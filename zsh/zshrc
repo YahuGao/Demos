@@ -44,3 +44,5 @@ export TEXMFSYSCONFIG=/etc/texmf
 # TEXMFCACHE=$TEXMFSYSVAR;$TEXMFVR
 # export TEXMFCONFIG TEXMFCACHE
 # <<< texlive <<<
+export PATH=/home/yahu/bin:/home/yahu/bin/VSCode-linux-x64/bin:$PATH
+alias code="code &"
