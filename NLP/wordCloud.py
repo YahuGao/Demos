@@ -5,6 +5,21 @@ import matplotlib
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
+'''
+获取文本中关键词的可视化:
+    1. 对文本进行分词 jieba.lcut()
+    2. 去停用词 (或者逆文档词)
+    3. 统计各个词出现的次数 
+    4. 根据各个词出现的次数进行逆序排序, 次数高的排在前面
+    5. 导入词云包: from wordcloud import WordCloud
+    6. 定义词云类: wordcloud = WordCloud(font_path, background_color, max_font_size)
+    7. 拟合数据, 接收一个从字符串到浮点数的字典frequencies: wordcloud.fit_words(frequencies)
+            frequencies : dict from string to float
+                    A contains words and associated frequency.
+    8. 画出图形: plt.imshow(wordcloud)
+                plt.axis("off")
+                plt.show()
+'''
 
 def get_segments(filename):
     segments = []
@@ -17,8 +32,7 @@ def get_segments(filename):
             for seg in segs:
                 if len(seg) > 1 and seg != '\r\n':
                     segments.append(seg)
-        except Exception as e:
-            #            print(content)
+        except:
             continue
 
     return segments
@@ -42,7 +56,9 @@ def data_process(segments):
     return segments
 
 
-def draw_wordCloud(segments):
+def draw_wordCloud(filename):
+    segments = get_segments(filename)
+    segments = data_process(segments)
     word_fequence = {x[0]: x[1] for x in segments[:1000]}
     matplotlib.rcParams['figure.figsize'] = (12.0, 12.0)
     wordcloud = WordCloud(font_path="data/simhei.ttf",
@@ -54,6 +70,7 @@ def draw_wordCloud(segments):
 
 
 if __name__ == '__main__':
-    segments = get_segments('data/house_news.csv')
-    segments = data_process(segments)
-    draw_wordCloud(segments)
+    filename = 'data/house_news.csv'
+    draw_wordCloud(filename)
+    filename = './data/home_news.csv'
+    draw_wordCloud(filename)
