@@ -6,3 +6,5 @@ emacs/emacs.d/abbrev_defs
 emacs/emacs.d/elpy/
 */*/*/*/__pycache__/
 */*/*/__pycache__/
+.vscode
+*/.ipynb_checkpoints
