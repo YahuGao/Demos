@@ -8,7 +8,6 @@ prompt walters
 # PROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
 PROMPT="%{$fg[yellow]%}%1~ %{$reset_color%}%#"
 
-alias es="emacs -nw --debug-init"
 alias ls="ls --color=always"
 
 # PATH
@@ -44,5 +43,3 @@ export TEXMFSYSCONFIG=/etc/texmf
 # TEXMFCACHE=$TEXMFSYSVAR;$TEXMFVR
 # export TEXMFCONFIG TEXMFCACHE
 # <<< texlive <<<
-export PATH=/home/yahu/bin:/home/yahu/bin/VSCode-linux-x64/bin:$PATH
-alias code="code &"
