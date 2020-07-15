@@ -8,3 +8,6 @@ emacs/emacs.d/elpy/
 */*/*/__pycache__/
 .vscode
 */.ipynb_checkpoints
+NLP/out/*
+NLP/dataset/*
+NLP/model/*
