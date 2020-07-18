@@ -1,3 +1,4 @@
 Usages of configuration files:
+ln -s `realpath emacs/emacs` ~/.emacs
 ln -s `realpath vim/vimrc` ~/.vimrc
 ln -s `realpath zsh/zshrc` ~/.zshrc
