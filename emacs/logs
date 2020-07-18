@@ -1,0 +1,75 @@
+Date: 01/06/2020
+Reference: http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+Figure out:
+what are the FRAME, WINDOW, BUFFER, MINI-BUFFER, STATUS-BAR and POINT of emacs.
+C-g: quit, like ESC for VIM.
+C-x b: switch buffers
+C-x left: left-cycle through buffers
+C-x right: right-cycle through buffers
+C-h C-h : help
+C-x k : kill buffer
+
+C-x 0 : close the active window
+C-x 1 : close all windows except the active window
+C-x 2 : split the active window vertically into two horizontal windows
+C-x 3 : split the active window horizontally into two vertical windows
+C-x o : change active window to next window
+
+C-x C-f : open file
+C-x C-s : save file
+C-x C-w : save file as
+
+C-space : set region mark
+C-w : kill region (the kill like cut in GUI)
+C-k : kill region between point and end of current line
+M-w : kill region without deleting
+C-y : yank region from kill ring
+M-y : move to previous item in the kill ring
+M-Y : move to next item in the kill ring
+
+C-_ :  undo(the same with C-x u)
+C-s : search forwards
+C-r : search backwards
+M-% : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)
+M-q : wrap text
+
+C-left : move one word left
+C-right : move one word right
+C-up : move one paragraph up
+C-down : move one paragraph down
+home : move to the beginning of the line
+end : move to the end of the line
+page up : move up a page
+page down : move down a page
+M- : move to end of buffer
+
+M-x shell: run a subshell with input and output throug an Emacs buffer
+M-| cmd RET: run the shell command line *cmd* with region contents as input(so you need markset a region at first)
+M-!: run shell command
+**** while open a python file ****
+C-c C-z: open a python shell
+C-c C-c: run the content of the buffer in the opened python shell
+C-c C-r: run the selected region in the python shell
+
+Date: 02/06/2020
+Add el-get for emacs without basic setup.
+**** INSTALL METHOD ****
+;; So the idea is that you copy/paste this code into your *scratch* buffer,
+;; hit C-j, and you have a working el-get.
+(url-retrieve
+ "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el"
+ (lambda (s)
+   (goto-char (point-max))
+   (eval-print-last-sexp)))
+**** INSTALL METHOD ****
+For details reference: https://github.com/dimitri/el-get
+
+;; Org-mode 可以列出提高，并使用tab键进行展开和关闭
+C-c C-t 将一个条目转换成一条代办事件
+
+C-h C-f find-function
+C-h C-v find-variable
+C-h C-k find-function-on-key
+
+M-< move to top of the buffer
+M-> move to end of the buffer
