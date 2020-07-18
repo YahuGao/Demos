@@ -43,6 +43,11 @@ There are two things you can do about this warning:
 	reftex                  ;; Help inserting labels, references and citations of tex
 	ivy-bibtex              ;; Help insert citations
 	pdf-tools               ;; Viewing and interacting with pdf within emacs
+        ein
+        websocket
+        request
+        auto-complete
+        smartrep
 	) "Default packages")
 
 (setq package-selected-packages my/packages)
