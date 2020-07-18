@@ -1,0 +1,141 @@
+;; C-j or C-x C-e to run
+(+ 2 2)
+
+(+ 2 (+ 1 1))
+4
+
+(+ 3 (+ 3 3))
+9
+
+(setq my-name "yahu")
+
+(insert "hello world")
+
+(insert "Hello, I'm " my-name)Hello, I'm yahu
+
+(defun hello () (insert "hello, I'm " my-name))
+
+(hello)
+
+(defun hello (name) (insert "hello, " name))
+
+(hello "you")hello, you
+
+(switch-to-buffer-other-window "*test*")
+
+(progn (switch-to-buffer-other-window "*test*")
+       (hello "you"))
+
+(progn (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (hello "there"))
+
+(progn (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (hello "again")
+       (other-window 1))
+
+(let ((local-name "you"))
+  (switch-to-buffer-other-window "*test*")
+  (erase-buffer)
+  (hello local-name)
+  (other-window 1))
+
+(format "hello %s!\n" "visitor")
+
+(defun hello (name)
+  (insert (format "hello %s!\n" name)))
+
+(hello "you")hello you!
+
+(defun greeting (name)
+  (let ((your-name "yahu"))
+    (insert (format "Hello %s!\n\nI am %s."
+		    name
+		    your-name))))
+(greeting "you")Hello you!
+
+I am yahu.
+
+(read-from-minibuffer "Enter your name: ")
+
+(defun greeting (from-name)
+  (let ((your-name (read-from-minibuffer "Enter your name: ")))
+    (insert (format "Hello %s!\n\nI am %s"
+		    from-name
+		    your-name
+		    ))))
+(greeting "Bastien")Hello Bastien!
+
+I am yahu
+
+(defun greeting (from-name)
+  (let ((your-name (read-from-minibuffer "Enter your name: ")))
+    (switch-to-buffer-other-window "*test*")
+    (erase-buffer)
+    (insert (format "Hello %s!\n\nI am %s" from-name your-name))
+    (other-window 1)))
+
+(greeting "Bastien")
+
+(setq list-of-names '("Sarah" "Chloe" "Mathilde"))
+(car list-of-names)
+"Sarah"
+
+(cdr list-of-names)
+("Chloe" "Mathilde")
+(push "Stephanie" list-of-names)
+("Stephanie" "Sarah" "Chloe" "Mathilde")
+(mapcar 'hello list-of-names)
+hello Stephanie!
+hello Sarah!
+hello Chloe!
+hello Mathilde!
+(nil nil nil nil)
+
+(defun greeting ()
+  (switch-to-buffer-other-window "*test*")
+  (erase-buffer)
+  (mapcar 'hello list-of-names)
+  (other-window 1))
+greeting
+(greeting)
+nil
+
+(defun replace-hello-by-bonjour()
+  (switch-to-buffer-other-window "*test*")
+  (goto-char (point-min))
+  (while (search-forward "hello")
+    (replace-match "Bonjour"))
+  (other-window 1))
+replace-hello-by-bonjour
+(replace-hello-by-bonjour)
+
+(defun hello-to-bonjour ()
+  (switch-to-buffer-other-window "*test*")
+  (erase-buffer)
+  (mapcar 'hello list-of-names)
+  (goto-char (point-min))
+  (while (search-forward "hello" nil t)
+    (replace-match "Bonjour"))
+  (other-window 1))
+hello-to-bonjour
+
+(hello-to-bonjour)
+nil
+(defun boldify-names ()
+  (switch-to-buffer-other-window "*test*")
+  (goto-char (point-min))
+  (while (re-search-forward "Bonjour \\(.+\\)!" nil t)
+    (add-text-properties (match-beginning 1)
+			 (match-end 1)
+			 (list 'face 'bold)))
+  (other-window 1) nil)
+boldify-names
+
+boldify-names
+
+(boldify-names)
+
+(setq a (format-time-string "%Y-%m-%d"))
+a
