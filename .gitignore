@@ -8,3 +8,5 @@ emacs/emacs.d/elpy/
 */*/*/__pycache__/
 .vscode
 */.ipynb_checkpoints
+emacs/emacs.d/request/
+emacs/emacs.d/transient/
