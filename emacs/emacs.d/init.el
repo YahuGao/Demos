@@ -1,9 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'init-packages)
 
-(add-to-list 'load-path "~/emacs-application-framework")
-(require 'eaf)
-
 ;; 修改配置文件后，需要重启编辑器或者重新加载配置文件
 ;; 重新加载配置文件 M-x load-file Enter Enter or M-x eval-buffer
 ;; 显示行号
