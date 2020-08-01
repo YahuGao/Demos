@@ -1,3 +1,4 @@
+(require 'company)
 (require 'config-theme)
 (require 'config-markdown)
 
