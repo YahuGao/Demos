@@ -37,6 +37,7 @@ There are two things you can do about this warning:
 	elpy                    ;; Emacs Lisp Python Environment
 	flycheck                ;; On the fly syntax checking
 	py-autopep8             ;; Run autopep8 on save
+	conda
 	jupyter
 	magit                   ;; Git integration
 	auctex                  ;; Write and formate tex files
