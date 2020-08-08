@@ -11,3 +11,5 @@ emacs/emacs.d/elpy/
 NLP/out/*
 NLP/dataset/*
 NLP/model/*
+*/models/*
+*/data/*
