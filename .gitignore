@@ -4,6 +4,10 @@ emacs/emacs.d/eaf
 emacs/emacs.d/auto-save-list
 emacs/emacs.d/abbrev_defs
 emacs/emacs.d/elpy/
+emacs/emacs.d/packages.txt
+emacs/emacs.d/session*
+emacs/emacs.d/transient
+emacs/emacs.d/request
 */*/*/*/__pycache__/
 */*/*/__pycache__/
 .vscode
@@ -13,3 +17,4 @@ NLP/dataset/*
 NLP/model/*
 */models/*
 */data/*
+python/__pycache__
