@@ -9,6 +9,7 @@ prompt walters
 PROMPT="%{$fg[yellow]%}%1~ %{$reset_color%}%#"
 
 alias ls="ls --color=always"
+alias es="emacs -nw"
 
 # PATH
 typeset -U path
