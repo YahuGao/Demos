@@ -10,10 +10,13 @@ PROMPT="%{$fg[yellow]%}%1~ %{$reset_color%}%#"
 
 alias ls="ls --color=always"
 alias es="emacs -nw"
+alias ml="conda activate ml"
+alias sama="ssh yahu@192.168.0.103"
 
 # PATH
 typeset -U path
 path=(~/bin $path[@])
+path=(/usr/local/texlive/2020/bin/x86_64-linux $path[@])
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -30,17 +33,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# >>> texlive >>>
-export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
-export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
-export TEXMFDIST=/usr/share/texmf-dist:$TEXMFDIST
-export TEXMFLOCAL=/usr/local/share/texmf:/usr/share/texmf
-export TEXMFSYSVAR=/var/lib/texmf
-export TEXMFSYSCONFIG=/etc/texmf
-# export TEXMFHOME=~/texmf
-# export TEXMFVAR=~/.texlive/texmf-var
-# TEXMFCONFIG=~/.texlive/texmf-config
-# TEXMFCACHE=$TEXMFSYSVAR;$TEXMFVR
-# export TEXMFCONFIG TEXMFCACHE
-# <<< texlive <<<
+
+#  enable remote physical desktop(Need connect a monitor device)
+#  x11vnc -display :0 -auth ~/.Xauthority
+#  x11vnc -display :0 -auth /var/lib/gdm/:0.Xauth
+#
+alias remote_desktop='x11vnc -display :0 -auth ~/.Xauthority'
+
+# enable remote virtual desktop(n is the virtual desktop number)
+# vncserver :n
