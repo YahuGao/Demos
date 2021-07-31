@@ -1,0 +1,1 @@
+cmd_/home/yahu/kernel_dev_demo/proc_demo/proc_file.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id=sha1  -T ./scripts/module-common.lds -o /home/yahu/kernel_dev_demo/proc_demo/proc_file.ko /home/yahu/kernel_dev_demo/proc_demo/proc_file.o /home/yahu/kernel_dev_demo/proc_demo/proc_file.mod.o;  true

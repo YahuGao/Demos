@@ -1,0 +1,1 @@
+cmd_/home/yahu/kernel_dev_demo/proc_demo/Module.symvers := sed 's/ko$$/o/' /home/yahu/kernel_dev_demo/proc_demo/modules.order | scripts/mod/modpost -m -a   -o /home/yahu/kernel_dev_demo/proc_demo/Module.symvers -e -i Module.symvers   -T -
